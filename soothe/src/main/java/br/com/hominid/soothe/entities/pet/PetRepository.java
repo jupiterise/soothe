@@ -1,8 +1,10 @@
 package br.com.hominid.soothe.entities.pet;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
-public interface PetEntityRepository extends JpaRepository<PetEntity, UUID> {
+@Repository
+public interface PetRepository extends JpaRepository<PetEntity, UUID> {
 }

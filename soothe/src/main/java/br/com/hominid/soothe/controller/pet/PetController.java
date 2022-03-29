@@ -3,7 +3,7 @@ package br.com.hominid.soothe.controller.pet;
 import br.com.hominid.soothe.entities.pet.PetDTO;
 import br.com.hominid.soothe.entities.pet.PetEntity;
 import br.com.hominid.soothe.entities.pet.PetMapper;
-import br.com.hominid.soothe.service.PetService;
+import br.com.hominid.soothe.service.PetCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class PetController {
 
     @Autowired
-    private PetService service;
+    private PetCrudService service;
     @Autowired
     private PetMapper mapper;
 
