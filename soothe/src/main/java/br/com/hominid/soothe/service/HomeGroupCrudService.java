@@ -1,7 +1,7 @@
 package br.com.hominid.soothe.service;
 
-import br.com.hominid.soothe.entities.pet.PetEntity;
-import br.com.hominid.soothe.entities.pet.PetEntityRepository;
+import br.com.hominid.soothe.entities.homegroup.HomeGroupEntity;
+import br.com.hominid.soothe.entities.homegroup.HomeGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,13 +11,14 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class PetService {
+public class HomeGroupCrudService implements CrudService<HomeGroupEntity> {
 
     @Autowired
-    PetEntityRepository repository;
+    HomeGroupRepository repository;
 
-    public PetEntity getById(UUID id) {
-        Optional<PetEntity> entity = repository.findById(id);
+    @Override
+    public HomeGroupEntity getById(UUID id) {
+        Optional<HomeGroupEntity> entity = repository.findById(id);
         if (entity.isPresent()) {
             return entity.get();
         } else {
@@ -25,16 +26,23 @@ public class PetService {
         }
     }
 
-    public List<PetEntity> getAll() {
+    @Override
+    public List<HomeGroupEntity> getAll() {
         return repository.findAll();
     }
 
-    public PetEntity create(PetEntity entity) {
+    @Override
+    public HomeGroupEntity create(HomeGroupEntity entity) {
         return repository.save(entity);
     }
 
+    @Override
     public void delete(UUID id) {
         repository.deleteById(id);
     }
 
+    @Override
+    public HomeGroupEntity update(HomeGroupEntity personEntity) {
+        return repository.save(personEntity);
+    }
 }

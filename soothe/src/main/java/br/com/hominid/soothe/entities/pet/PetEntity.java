@@ -28,14 +28,19 @@ public class PetEntity {
 
     @Column(nullable = false)
     private String name;
+
     private LocalDate birthDate;
+
+    @Column(nullable = false)
     private SpeciesType species;
+
     private AnimalRaceType animalRace;
+
+    @Column(nullable = false)
     private AnimalGroupType animalGroup;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "pets", fetch = FetchType.LAZY)
     private Set<PersonEntity> overseers = new HashSet<>();
-
 
 }

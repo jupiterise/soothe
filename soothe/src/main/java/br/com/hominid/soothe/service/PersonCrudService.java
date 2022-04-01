@@ -1,8 +1,7 @@
 package br.com.hominid.soothe.service;
 
-import br.com.hominid.soothe.entities.person.PersonDTO;
 import br.com.hominid.soothe.entities.person.PersonEntity;
-import br.com.hominid.soothe.entities.person.PersonEntityRepository;
+import br.com.hominid.soothe.entities.person.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +11,12 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class PersonService {
+public class PersonCrudService implements CrudService<PersonEntity>  {
 
     @Autowired
-    PersonEntityRepository repository;
+    PersonRepository repository;
 
+    @Override
     public PersonEntity getById(UUID id) {
         Optional<PersonEntity> entity = repository.findById(id);
         if (entity.isPresent()) {
@@ -26,18 +26,22 @@ public class PersonService {
         }
     }
 
+    @Override
     public List<PersonEntity> getAll() {
         return repository.findAll();
     }
 
+    @Override
     public PersonEntity create(PersonEntity entity) {
         return repository.save(entity);
     }
 
+    @Override
     public void delete(UUID id) {
         repository.deleteById(id);
     }
 
+    @Override
     public PersonEntity update(PersonEntity personEntity) {
         return repository.save(personEntity);
     }
