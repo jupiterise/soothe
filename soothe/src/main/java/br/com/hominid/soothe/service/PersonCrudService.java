@@ -1,7 +1,7 @@
 package br.com.hominid.soothe.service;
 
-import br.com.hominid.soothe.entities.person.PersonEntity;
-import br.com.hominid.soothe.entities.person.PersonRepository;
+import br.com.hominid.soothe.entities.PersonEntity;
+import br.com.hominid.soothe.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
