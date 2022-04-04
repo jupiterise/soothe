@@ -16,24 +16,24 @@
 	<properties>
 		<java.version>11</java.version>
 		<model-mapper-version>3.0.0</model-mapper-version>
-		<jeasy-version>4.2.0</jeasy-version>
+		<jeasy-version>5.0.0</jeasy-version>
+		<spring-security-version>5.6.2</spring-security-version>
+		<spring-boot-starter-web-version>2.6.6</spring-boot-starter-web-version>
+		<spring-data-jpa-version>2.6.3</spring-data-jpa-version>
+		<spring-boot-starter-security-version>2.6.6</spring-boot-starter-security-version>
+		<spring-boot-starter-jdbc-version>2.6.6</spring-boot-starter-jdbc-version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-site-plugin</artifactId>
-			<version>3.10.0</version>
+			<version>3.11.0</version>
 			<type>maven-plugin</type>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -60,8 +60,40 @@
 			<version>${jeasy-version}</version>
 			<type>pom</type>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring-security-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring-boot-starter-web-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data-jpa-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<version>${spring-boot-starter-security-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+			<version>${spring-boot-starter-jdbc-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.ldap</groupId>
+			<artifactId>spring-ldap-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-ldap</artifactId>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

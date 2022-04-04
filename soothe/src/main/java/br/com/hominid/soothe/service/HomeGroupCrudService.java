@@ -1,7 +1,7 @@
 package br.com.hominid.soothe.service;
 
-import br.com.hominid.soothe.entities.homegroup.HomeGroupEntity;
-import br.com.hominid.soothe.entities.homegroup.HomeGroupRepository;
+import br.com.hominid.soothe.entities.HomeGroupEntity;
+import br.com.hominid.soothe.repository.HomeGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +42,7 @@ public class HomeGroupCrudService implements CrudService<HomeGroupEntity> {
     }
 
     @Override
-    public HomeGroupEntity update(HomeGroupEntity personEntity) {
-        return repository.save(personEntity);
+    public HomeGroupEntity update(HomeGroupEntity homeGroupEntity) {
+        return repository.save(homeGroupEntity);
     }
 }

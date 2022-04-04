@@ -1,7 +1,7 @@
 package br.com.hominid.soothe.service;
 
-import br.com.hominid.soothe.entities.event.EventEntity;
-import br.com.hominid.soothe.entities.event.EventRepository;
+import br.com.hominid.soothe.entities.EventEntity;
+import br.com.hominid.soothe.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
