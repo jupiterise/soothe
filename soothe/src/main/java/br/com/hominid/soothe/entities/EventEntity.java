@@ -14,7 +14,6 @@ import java.util.UUID;
 @Entity(name = "EventEntity")
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "event")
@@ -46,4 +45,16 @@ public class EventEntity {
     @Column(nullable = false)
     private LocalDateTime eventMoment;
 
+    @Override
+    public String toString() {
+        return "EventEntity{" +
+                "id=" + id +
+                ", personId=" + personId +
+                ", pets=" + pets +
+                ", eventType=" + eventType +
+                ", amountType=" + amountType +
+                ", amount=" + amount +
+                ", eventMoment=" + eventMoment +
+                '}';
+    }
 }

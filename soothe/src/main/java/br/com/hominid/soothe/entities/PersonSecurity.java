@@ -1,6 +1,5 @@
 package br.com.hominid.soothe.entities;
 
-import org.apache.commons.lang3.RandomUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +15,8 @@ public class PersonSecurity implements UserDetails {
     public PersonSecurity(PersonEntity personEntity) {
         this.personEntity = personEntity;
     }
+
+    private static final long serialVersionUID = -6690946490872875352L;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

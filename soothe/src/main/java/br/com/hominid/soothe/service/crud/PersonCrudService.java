@@ -1,7 +1,7 @@
-package br.com.hominid.soothe.service;
+package br.com.hominid.soothe.service.crud;
 
-import br.com.hominid.soothe.entities.HomeGroupEntity;
-import br.com.hominid.soothe.repository.HomeGroupRepository;
+import br.com.hominid.soothe.entities.PersonEntity;
+import br.com.hominid.soothe.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,14 +11,14 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class HomeGroupCrudService implements CrudService<HomeGroupEntity> {
+public class PersonCrudService implements CrudService<PersonEntity>  {
 
     @Autowired
-    HomeGroupRepository repository;
+    PersonRepository repository;
 
     @Override
-    public HomeGroupEntity getById(UUID id) {
-        Optional<HomeGroupEntity> entity = repository.findById(id);
+    public PersonEntity getById(UUID id) {
+        Optional<PersonEntity> entity = repository.findById(id);
         if (entity.isPresent()) {
             return entity.get();
         } else {
@@ -27,12 +27,12 @@ public class HomeGroupCrudService implements CrudService<HomeGroupEntity> {
     }
 
     @Override
-    public List<HomeGroupEntity> getAll() {
+    public List<PersonEntity> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public HomeGroupEntity create(HomeGroupEntity entity) {
+    public PersonEntity create(PersonEntity entity) {
         return repository.save(entity);
     }
 
@@ -42,7 +42,8 @@ public class HomeGroupCrudService implements CrudService<HomeGroupEntity> {
     }
 
     @Override
-    public HomeGroupEntity update(HomeGroupEntity homeGroupEntity) {
-        return repository.save(homeGroupEntity);
+    public PersonEntity update(PersonEntity personEntity) {
+        return repository.save(personEntity);
     }
+
 }

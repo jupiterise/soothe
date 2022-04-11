@@ -1,7 +1,5 @@
 package br.com.hominid.soothe.entities;
 
-import br.com.hominid.soothe.entities.PersonEntity;
-import br.com.hominid.soothe.entities.PetEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
@@ -13,7 +11,6 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "home_group")
@@ -30,7 +27,7 @@ public class HomeGroupEntity {
     @ManyToMany(mappedBy = "homeGroups", fetch = FetchType.LAZY)
     private Set<PersonEntity> residents;
 
-    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY )
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinTable(
             name = "home_group_pet",
             joinColumns = @JoinColumn(name = "home_group_id"),
@@ -38,4 +35,13 @@ public class HomeGroupEntity {
     )
     private Set<PetEntity> pets = new HashSet<>();
 
+    @Override
+    public String toString() {
+        return "HomeGroupEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", residents=" + residents +
+                ", pets=" + pets +
+                '}';
+    }
 }
