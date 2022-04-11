@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class SootheUsernamePasswordAuthenticationProvider implements AuthenticationProvider {
@@ -28,11 +29,11 @@ public class SootheUsernamePasswordAuthenticationProvider implements Authenticat
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
-        List<PersonEntity> users = personRepository.findByEmail(username);
-        if (!users.isEmpty()) {
-            if (passwordEncoder.matches(password, users.get(0).getPassword())) {
+        PersonEntity users = personRepository.findByEmail(username);
+        if (Optional.ofNullable(users).isPresent()) {
+            if (passwordEncoder.matches(password, users.getPassword())) {
                 List<GrantedAuthority> authorities = new ArrayList<>();
-                authorities.add(new SimpleGrantedAuthority(users.get(0).getRole()));
+                authorities.add(new SimpleGrantedAuthority(users.getRole()));
                 return new UsernamePasswordAuthenticationToken(username, password, authorities);
             } else {
                 throw new BadCredentialsException("Invalid password");

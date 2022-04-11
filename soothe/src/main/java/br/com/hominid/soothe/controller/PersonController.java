@@ -1,16 +1,17 @@
 package br.com.hominid.soothe.controller;
 
 import br.com.hominid.soothe.entities.HomeGroupEntity;
-import br.com.hominid.soothe.entities.dto.PersonDTO;
 import br.com.hominid.soothe.entities.PersonEntity;
-import br.com.hominid.soothe.entities.mapper.PersonMapper;
 import br.com.hominid.soothe.entities.PetEntity;
-import br.com.hominid.soothe.service.HomeGroupCrudService;
-import br.com.hominid.soothe.service.PersonCrudService;
-import br.com.hominid.soothe.service.PetCrudService;
+import br.com.hominid.soothe.entities.dto.PersonDTO;
+import br.com.hominid.soothe.entities.mapper.PersonMapper;
+import br.com.hominid.soothe.service.HomeGroupService;
+import br.com.hominid.soothe.service.PersonService;
+import br.com.hominid.soothe.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -21,14 +22,20 @@ import java.util.stream.Collectors;
 public class PersonController {
 
     @Autowired
-    private PersonCrudService service;
+    private PersonService service;
     @Autowired
     private PersonMapper mapper;
 
     @Autowired
-    private PetCrudService petService;
+    private PetService petService;
     @Autowired
-    private HomeGroupCrudService homeGroupCrudService;
+    private HomeGroupService homeGroupCrudService;
+
+    @GetMapping("/user")
+    public PersonDTO getUserDetailsAfterLogin(Principal user) {
+        PersonEntity person = service.findPersonByEmail(user.getName());
+        return mapper.toDto(person);
+    }
 
     @GetMapping("/person")
     public List<PersonDTO> getAll() {

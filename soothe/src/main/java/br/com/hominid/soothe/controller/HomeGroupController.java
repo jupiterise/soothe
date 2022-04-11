@@ -1,11 +1,11 @@
 package br.com.hominid.soothe.controller;
 
-import br.com.hominid.soothe.entities.dto.HomeGroupDTO;
 import br.com.hominid.soothe.entities.HomeGroupEntity;
-import br.com.hominid.soothe.entities.mapper.HomeGroupMapper;
 import br.com.hominid.soothe.entities.PersonEntity;
-import br.com.hominid.soothe.service.HomeGroupCrudService;
-import br.com.hominid.soothe.service.PersonCrudService;
+import br.com.hominid.soothe.entities.dto.HomeGroupDTO;
+import br.com.hominid.soothe.entities.mapper.HomeGroupMapper;
+import br.com.hominid.soothe.service.HomeGroupService;
+import br.com.hominid.soothe.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,12 +19,12 @@ import java.util.stream.Collectors;
 public class HomeGroupController {
 
     @Autowired
-    private HomeGroupCrudService service;
+    private HomeGroupService service;
     @Autowired
     private HomeGroupMapper mapper;
 
     @Autowired
-    private PersonCrudService personCrudService;
+    private PersonService personCrudService;
 
     @GetMapping("/homeGroup")
     public List<HomeGroupDTO> getAll() {

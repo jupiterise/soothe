@@ -11,7 +11,6 @@ import java.util.UUID;
 @Entity(name = "PersonEntity")
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "person")
@@ -33,7 +32,7 @@ public class PersonEntity {
     @Column(nullable = false)
     private String name;
 
-    @ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY )
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinTable(
             name = "person_pet",
             joinColumns = @JoinColumn(name = "person_id"),
@@ -45,6 +44,10 @@ public class PersonEntity {
     @JoinColumn(name = "person_id")
     private Set<EventEntity> events = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "person_id")
+    private Set<NotificationEntity> notifications = new HashSet<>();
+
     @JsonIgnore
     @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinTable(
@@ -54,4 +57,18 @@ public class PersonEntity {
     )
     private Set<HomeGroupEntity> homeGroups;
 
+    @Override
+    public String toString() {
+        return "PersonEntity{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", name='" + name + '\'' +
+                ", pets=" + pets +
+                ", events=" + events +
+                ", notifications=" + notifications +
+                ", homeGroups=" + homeGroups +
+                '}';
+    }
 }

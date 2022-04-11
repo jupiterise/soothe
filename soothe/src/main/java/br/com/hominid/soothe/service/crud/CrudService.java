@@ -1,4 +1,4 @@
-package br.com.hominid.soothe.service;
+package br.com.hominid.soothe.service.crud;
 
 import java.util.List;
 import java.util.UUID;

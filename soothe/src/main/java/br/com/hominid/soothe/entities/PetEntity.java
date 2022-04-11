@@ -15,7 +15,6 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "pet")
@@ -49,4 +48,19 @@ public class PetEntity {
     @JsonIgnore
     @ManyToMany(mappedBy = "pets", fetch = FetchType.LAZY)
     private Set<HomeGroupEntity> homeGroups = new HashSet<>();
+
+    @Override
+    public String toString() {
+        return "PetEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birthDate=" + birthDate +
+                ", species=" + species +
+                ", animalRace=" + animalRace +
+                ", animalGroup=" + animalGroup +
+                ", events=" + events +
+                ", overseers=" + overseers +
+                ", homeGroups=" + homeGroups +
+                '}';
+    }
 }

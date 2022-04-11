@@ -1,4 +1,4 @@
-package br.com.hominid.soothe.service;
+package br.com.hominid.soothe.service.crud;
 
 import br.com.hominid.soothe.entities.EventEntity;
 import br.com.hominid.soothe.repository.EventRepository;

@@ -1,14 +1,11 @@
 package br.com.hominid.soothe.repository;
 
-import br.com.hominid.soothe.entities.PersonEntity;
+import br.com.hominid.soothe.entities.NotificationEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
 @Repository
-public interface PersonRepository extends JpaRepository<PersonEntity, UUID> {
-
-    PersonEntity findByEmail(String email);
-
+public interface NotificationRepository extends JpaRepository<NotificationEntity, UUID> {
 }

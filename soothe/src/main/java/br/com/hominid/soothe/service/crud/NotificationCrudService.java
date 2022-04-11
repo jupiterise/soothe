@@ -1,7 +1,7 @@
-package br.com.hominid.soothe.service;
+package br.com.hominid.soothe.service.crud;
 
-import br.com.hominid.soothe.entities.PetEntity;
-import br.com.hominid.soothe.repository.PetRepository;
+import br.com.hominid.soothe.entities.NotificationEntity;
+import br.com.hominid.soothe.repository.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,14 +11,14 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class PetCrudService implements CrudService<PetEntity> {
+public class NotificationCrudService implements CrudService<NotificationEntity> {
 
     @Autowired
-    PetRepository repository;
+    NotificationRepository repository;
 
     @Override
-    public PetEntity getById(UUID id) {
-        Optional<PetEntity> entity = repository.findById(id);
+    public NotificationEntity getById(UUID id) {
+        Optional<NotificationEntity> entity = repository.findById(id);
         if (entity.isPresent()) {
             return entity.get();
         } else {
@@ -27,18 +27,13 @@ public class PetCrudService implements CrudService<PetEntity> {
     }
 
     @Override
-    public List<PetEntity> getAll() {
+    public List<NotificationEntity> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public PetEntity create(PetEntity entity) {
+    public NotificationEntity create(NotificationEntity entity) {
         return repository.save(entity);
-    }
-
-    @Override
-    public PetEntity update(PetEntity petEntity) {
-        return repository.save(petEntity);
     }
 
     @Override
@@ -46,4 +41,8 @@ public class PetCrudService implements CrudService<PetEntity> {
         repository.deleteById(id);
     }
 
+    @Override
+    public NotificationEntity update(NotificationEntity notificationEntity) {
+        return repository.save(notificationEntity);
+    }
 }
